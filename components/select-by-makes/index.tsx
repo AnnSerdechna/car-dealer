@@ -3,11 +3,11 @@
 import { FC, ChangeEvent } from 'react';
 
 import { Select } from '@/components/ui';
-import { VehicleData } from '@/types';
+import { VehicleDataProps } from '@/types';
 import { useUpdatedSearchParams } from '@/hooks/useSelectedSearchParams';
 
 type SelectByMakesProps = {
-  data: VehicleData[];
+   data: VehicleDataProps[];
 };
 
 export const SelectByMakes: FC<SelectByMakesProps> = ({ data }) => {
@@ -20,6 +20,7 @@ export const SelectByMakes: FC<SelectByMakesProps> = ({ data }) => {
 
   return (
     <Select
+      placeholder={'a vehicle'}
       options={data?.map((option) => (
         <option key={option.MakeId} value={option.MakeId}>
           {option.MakeName}

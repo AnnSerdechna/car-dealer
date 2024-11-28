@@ -6,7 +6,7 @@ import { Select } from '@/components/ui';
 import { useUpdatedSearchParams } from '@/hooks/useSelectedSearchParams';
 
 export const SelectByYears: FC = () => {
-  const { year, updateQueryParams } = useUpdatedSearchParams();
+  const { modelyear, updateQueryParams } = useUpdatedSearchParams();
 
   const startYear = 2015;
   const currentYear = new Date().getFullYear();
@@ -18,17 +18,20 @@ export const SelectByYears: FC = () => {
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedYear = event.target.value;
-    updateQueryParams('year', selectedYear);
+     updateQueryParams('modelyear', selectedYear);
   };
 
   return (
     <Select
-      options={yearsData.map((year) => (
-        <option key={year} value={year}>
-          {year}
-        </option>
-      ))}
-      value={year}
+      placeholder={'a year'}
+      options={(
+         yearsData.map((year) => (
+            <option key={year} value={year}>
+               {year}
+            </option>
+         ))
+      )}
+        value={modelyear}
       onChange={handleChange}
     />
   );
