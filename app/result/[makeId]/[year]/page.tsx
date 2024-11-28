@@ -1,7 +1,11 @@
-import { Container } from '@/components/container';
 import { lazy, Suspense } from 'react';
 
+import { fetchUrlResults } from '@/app/utils';
+import { Container } from '@/components/container';
+import { LinkBtn } from '@/components/ui';
+
 const ResultsVehicle = lazy(() => import('@/components/resutl-vehicle'));
+const EmptyData = lazy(() => import('@/components/empty-data'));
 
 /**
  * In Next.js with the App Router, getStaticProps and getServerSideProps are not used. Instead, Next.js provides new methods for data fetching that are designed to integrate with React Server Components
@@ -9,7 +13,7 @@ const ResultsVehicle = lazy(() => import('@/components/resutl-vehicle'));
 
 async function fetchVehicleData(makeId: string, year: string) {
    const response = await fetch(
-      `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/${makeId}/modelyear/${year}?format=json`
+      `${fetchUrlResults}/makeId/${makeId}/modelyear/${year}?format=json`
    );
 
    if (!response.ok) {
@@ -27,10 +31,15 @@ export default async function VehiclePage({
    const { makeId, year } = params;
    const vehicleData = await fetchVehicleData(makeId, year);
 
+   const data = vehicleData?.Results ?? [];
+
    return (
-      <Container>
-         <Suspense fallback={<p>...</p>}>
-            <ResultsVehicle data={vehicleData?.Results ?? []} />
+      <Container contentAlign={'start'}>
+         <div className='absolute tpp-10 left-10'>
+            <LinkBtn href={'/'} text={'Back'} />
+         </div>
+         <Suspense fallback={<p>Loading...</p>}>
+            {!!data.length ? <ResultsVehicle data={data} /> : <EmptyData />}
          </Suspense>
       </Container>
    );

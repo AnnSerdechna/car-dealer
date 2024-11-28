@@ -11,23 +11,23 @@ type SelectByMakesProps = {
 };
 
 export const SelectByMakes: FC<SelectByMakesProps> = ({ data }) => {
-  const { makeId, updateQueryParams } = useUpdatedSearchParams();
+   const { makeId, updateQueryParams } = useUpdatedSearchParams();
 
-  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const selectedMakeId = event.target.value;
-    updateQueryParams('makeId', selectedMakeId);
-  };
+   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+      const selectedMakeId = event.target.value;
+      updateQueryParams('makeId', selectedMakeId);
+   };
 
-  return (
-    <Select
-      placeholder={'a vehicle'}
-      options={data?.map((option) => (
-        <option key={option.MakeId} value={option.MakeId}>
-          {option.MakeName}
-        </option>
-      ))}
-      value={makeId}
-      onChange={handleChange}
-    />
-  );
+   return (
+      <Select
+         placeholder={'a vehicle'}
+         options={data?.map((option) => (
+            <option key={option.MakeId} value={option.MakeId}>
+               {option.MakeName}
+            </option>
+         ))}
+         value={makeId}
+         onChange={handleChange}
+      />
+   );
 };

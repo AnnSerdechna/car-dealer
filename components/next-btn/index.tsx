@@ -3,10 +3,10 @@
 import { FC } from 'react';
 
 import { LinkBtn } from '@/components/ui';
-import {useUpdatedSearchParams} from '@/hooks/useSelectedSearchParams';
+import { useUpdatedSearchParams } from '@/hooks/useSelectedSearchParams';
 
 export const NextButton: FC = () => {
-   const {modelyear, makeId } = useUpdatedSearchParams();
+   const { modelyear, makeId } = useUpdatedSearchParams();
 
    const isEnabled = !!modelyear && !!makeId;
 
@@ -18,5 +18,5 @@ export const NextButton: FC = () => {
             isDisabled={!isEnabled}
          />
       </>
-   )
-}
+   );
+};

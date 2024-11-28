@@ -1,18 +1,27 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC, ReactNode } from 'react';
 
-export const Container: FC<PropsWithChildren> = ({ children }) => {
+type ContainerProps = {
+   contentAlign?: 'center' | 'start';
+   children: ReactNode;
+};
+
+export const Container: FC<ContainerProps> = ({
+   contentAlign = 'center',
+   children,
+}) => {
    return (
       <main
-         className={`
+         className={` 
             flex 
-            items-center
-            justify-center 
-            h-screen  
+            items-${contentAlign}
+            justify-center
+            h-full 
+            min-h-screen
             p-10 
             bg-gray-100
          `}
       >
          {children}
       </main>
-   )
-}
+   );
+};
