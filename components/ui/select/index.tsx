@@ -1,4 +1,7 @@
+import Image from 'next/image';
 import React, { FC, ReactNode } from 'react';
+
+import Arrow from '@/public/arrow.svg'
 
 interface SelectComponentProps {
    options: ReactNode;
@@ -53,20 +56,12 @@ export const Select: FC<SelectComponentProps> = ({
                text-gray-500
          `}
          >
-            <svg
-               className="h-4 w-4"
-               xmlns="http://www.w3.org/2000/svg"
-               fill="none"
-               viewBox="0 0 24 24"
-               stroke="currentColor"
-            >
-               <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-               />
-            </svg>
+            <Image 
+               src={Arrow} 
+               alt={'Arrow'} 
+               width={16} 
+               height={16} 
+            />
          </div>
       </div>
    );

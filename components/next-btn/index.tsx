@@ -11,12 +11,10 @@ export const NextButton: FC = () => {
    const isEnabled = !!modelyear && !!makeId;
 
    return (
-      <>
-         <LinkBtn
-            href={`result/${makeId}/${modelyear}`}
-            text={'Next'}
-            isDisabled={!isEnabled}
-         />
-      </>
+      <LinkBtn
+         href={`result/${makeId}/${modelyear}`}
+         text={'Next'}
+         isDisabled={!isEnabled}
+      />
    );
 };

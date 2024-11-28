@@ -16,7 +16,11 @@ export const LinkBtn: FC<LinkBtnProps> = ({
       <Link
          href={href}
          className={`
-      	${isDisabled ? 'pointer-events-none' : 'pointer-events-auto'}
+      	${
+				isDisabled 
+					? 'pointer-events-none opacity-50' 
+					: 'pointer-events-auto opacity-1'
+			}
         	border
 			border-gray-300 
          bg-white
