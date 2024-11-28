@@ -31,7 +31,7 @@ export default async function VehiclePage({
 
    return (
       <Container contentAlign={'start'}>
-         <div className='absolute tpp-10 left-10'>
+         <div className="absolute tpp-10 left-10">
             <LinkBtn href={'/'} text={'Back'} />
          </div>
          <Suspense fallback={<p>Loading...</p>}>
