@@ -4,10 +4,7 @@ import { Container } from '@/components/container';
 import { fetchUrl } from './utils';
 
 export default async function Home() {
-  const res = await fetch(
-    `${fetchUrl}/car?format=json`,
-    { cache: 'no-store' }
-  );
+  const res = await fetch(`${fetchUrl}/car?format=json`, { cache: 'no-store' });
 
   const data = await res.json();
 

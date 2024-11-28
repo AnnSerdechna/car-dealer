@@ -7,10 +7,6 @@ import { LinkBtn } from '@/components/ui';
 const ResultsVehicle = lazy(() => import('@/components/resutl-vehicle'));
 const EmptyData = lazy(() => import('@/components/empty-data'));
 
-/**
- * In Next.js with the App Router, getStaticProps and getServerSideProps are not used. Instead, Next.js provides new methods for data fetching that are designed to integrate with React Server Components
- */
-
 async function fetchVehicleData(makeId: string, year: string) {
    const response = await fetch(
       `${fetchUrlResults}/makeId/${makeId}/modelyear/${year}?format=json`
